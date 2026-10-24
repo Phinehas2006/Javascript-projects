@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  --background: #111314;
+  --panel: #1b1e1f;
+  --display: #252a29;
+  --key: #303635;
+  --key-hover: #3b4240;
+  --muted: #aab5ad;
+  --text: #f3f5ed;
+  --accent: #d8f36b;
+  --accent-hover: #e4ff83;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: var(--text);
+  background: radial-gradient(circle at top left, #26342e 0, transparent 38%), var(--background);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.calculator {
+  width: min(100%, 390px);
+  padding: 18px;
+  border: 1px solid #3b4541;
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: 0 24px 70px rgb(0 0 0 / 35%);
+}
+
+.display {
+  min-height: 136px;
+  padding: 22px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--display);
+  text-align: right;
+}
+
+.previous-operand {
+  min-height: 24px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.current-operand {
+  width: 100%;
+  overflow: hidden;
+  font-family: 'DM Mono', monospace;
+  font-size: clamp(2rem, 9vw, 3.5rem);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  min-height: 64px;
+  border: 0;
+  border-radius: 14px;
+  color: var(--text);
+  background: var(--key);
+  font: 600 1.2rem 'Space Grotesk', sans-serif;
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: scale(0.95);
+}
+
+.key:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.key-muted {
+  color: var(--muted);
+}
+
+.key-operator {
+  color: var(--accent);
+  background: #39432e;
+}
+
+.key-operator:hover {
+  background: #4a5938;
+}
+
+.key-equals {
+  color: #17200c;
+  background: var(--accent);
+}
+
+.key-equals:hover {
+  background: var(--accent-hover);
+}
+
+.key-wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 12px;
+  }
+
+  .calculator {
+    padding: 12px;
+  }
+
+  .key {
+    min-height: 58px;
+  }
+}
